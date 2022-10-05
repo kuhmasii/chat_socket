@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lets CHAT</title>
+
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+	{% include 'nav.html' %}
+	<div class="container">
+		<h1 class="heading" style="background-color:rgb(212, 130, 104);">1. Pick a roomname</h1>
+		<h1 class="heading" style="background-color:rgb(151, 243, 108);">2. Send it to friends</h1>
+		<h1 class="heading" style="background-color:rgb(238, 230, 118);">3. Have fun!!!!</h1>
+		<h1 class="heading" style="background-color:rgb(209, 6, 33);">4. Don't Forget the roomname</h1>
+	</div>
+
+	<div class="container">
+		<h3 class="heading">RooName?</h3>
+		<input class="textinput" type="text" id="room-name-input" size="50">
+		<input class='button' type="submit" id="room-name-submit" value="Enter">
+	</div>
+
+	<script src="{% static 'index.js' %}"></script>
+</body>
+</html>

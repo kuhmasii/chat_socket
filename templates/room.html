@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ room_name.title }} | Room Page</title>
+
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+	{% include 'nav.html' %}
+	<a class="leaveButton" href="{% url 'index' %}">Exit Room</a>
+	<div class="container">
+		<div id='chat-log'>
+			{% for chat in chats.all %}
+				{% if chat.user.id == request.user.id %}
+				<div class="message sender">
+					{{ chat.content }}
+				</div>
+				{% else %}
+				<div class="message receiver">
+					{{ chat.content }}
+				</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+	<div class="container">
+		<h1 class="heading">Hello welcome to the {{ room_name.title|upper }} chat room.</h1>
+		<input class='textinput' id="chat-message-input" type="text" size="80">
+		<input class="button" id="chat-message-submit" type="button" value="Send">
+		{{ room_name|json_script:'room-name' }}
+		{{ request.user.id |json_script:'user-id' }}
+		{{ request.user.username |json_script:'username' }}
+	</div>
+	<script src="{% static 'room.js' %}"></script>
+</body>
+</html>
